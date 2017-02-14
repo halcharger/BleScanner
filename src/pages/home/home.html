@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            BLE Scanner
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <ion-list-header>
+            BLE Peripherals
+            <ion-buttons end>
+                <button ng-disabled="isScanning" ion-button icon-left (click)="scan()">
+                  <ion-icon [name]="scanButtonIconName"></ion-icon>
+                  {{scanButtonText}}
+                </button>
+            </ion-buttons>
+        </ion-list-header>
+        <button ion-item *ngFor="let item of peripherals" (click)="connectToPeripheral(item)">
+            {{item.name || item.id}} ({{item.rssi}})
+        </button>
+    </ion-list>
+</ion-content>

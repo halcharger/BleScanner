@@ -1,0 +1,34 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Peripheral: {{peripheral.name || peripheral.id}}</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+        <ion-item>
+            <ion-label stacked>ID:</ion-label>
+            <ion-label>{{peripheral.id}}</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Name:</ion-label>
+            <ion-label>{{peripheral.name}}</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Received signal strength indication:</ion-label>
+            <ion-label>{{peripheral.rssi}}</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Advertising:</ion-label>
+            <ion-label>{{peripheral.advertisingData}}</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Connect Data:</ion-label>
+            <ion-label>{{peripheral.connectData}}</ion-label>
+        </ion-item>
+
+    </ion-list>
+</ion-content>
