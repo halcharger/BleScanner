@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { BLE } from 'ionic-native';
 
@@ -9,7 +9,7 @@ import { BLE } from 'ionic-native';
 export class PeripheralPage {
   peripheral;
   
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private zone: NgZone) {
     this.peripheral = this.navParams.get('peripheral');
     this.peripheral.advertisingData = new Uint8Array(this.peripheral.advertising)
     this.peripheral.connectData = '';
@@ -18,7 +18,7 @@ export class PeripheralPage {
 
   onConnect(device){
     console.log('onConnect -> device:', device);
-    this.peripheral.connectData = JSON.stringify(device);
+    this.zone.run(() => this.peripheral.connectData = JSON.stringify(device));
   }
 
 }
