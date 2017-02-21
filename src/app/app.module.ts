@@ -3,6 +3,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { PeripheralPage } from '../pages/peripheral/peripheral';
+import { BleScanner } from '../providers/ble-scanner';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,6 @@ import { PeripheralPage } from '../pages/peripheral/peripheral';
     HomePage, 
     PeripheralPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, BleScanner]
 })
 export class AppModule {}

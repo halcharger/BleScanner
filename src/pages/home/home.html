@@ -8,17 +8,17 @@
 
 <ion-content padding>
     <ion-list>
-        <ion-list-header>
-            BLE Peripherals
-            <ion-buttons end>
-                <button ng-disabled="isScanning" ion-button icon-left (click)="scan()">
-                  <ion-icon [name]="scanButtonIconName"></ion-icon>
-                  {{scanButtonText}}
-                </button>
-            </ion-buttons>
-        </ion-list-header>
-        <button ion-item *ngFor="let item of peripherals" (click)="connectToPeripheral(item)">
+        <ion-list-header>BLE Peripherals</ion-list-header>
+        <button ion-item button-left *ngFor="let item of bleScanner.peripherals" (click)="filterLogsByPeripheral(item)">
+            <ion-icon name="{{bleScanner.deviceIdToFilterLogs === item.id ? 'checkmark-circle' : ''}}"></ion-icon>
             {{item.name || item.id}} ({{item.rssi}})
         </button>
+    </ion-list>
+    <ion-list text-wrap>
+        <ion-list-header>Logs</ion-list-header>
+        <ion-item *ngFor="let log of bleScanner.logs">
+            <ion-label stacked>{{log.timeStamp.toLocaleTimeString()}}</ion-label>
+            <ion-label>{{log.description}}</ion-label>
+        </ion-item>
     </ion-list>
 </ion-content>
