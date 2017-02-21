@@ -44,7 +44,8 @@ export class BleScanner {
   }
 
   private updateLogs(){
-    this.logs = this.unfilteredLogs.filter(l => l.deviceId === this.deviceIdToFilterLogs);
+    this.logs = this.unfilteredLogs.filter(l => l.deviceId === this.deviceIdToFilterLogs)
+                                   .sort((a,b) => b.timeStamp.getTime() - a.timeStamp.getTime());
   }
 
   private deviceDetected(device){
