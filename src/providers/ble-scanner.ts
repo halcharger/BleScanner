@@ -19,7 +19,7 @@ export class BleScanner {
     console.log('bleScanner.startScan');
     this.scanId = new Date();
     BLE.startScan([]).subscribe(d => this.deviceDetected(d));
-    setTimeout(_ => this.restartScan(), 5000);
+    setTimeout(_ => this.restartScan(), 3000);
   }
 
   stopScan(){
